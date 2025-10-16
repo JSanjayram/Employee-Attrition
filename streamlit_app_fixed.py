@@ -214,33 +214,37 @@ st.markdown("""
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Make the sidebar transparent */
-.stSidebar > div:first-child {
-    background: rgba(0, 0, 0, 0.6) !important;
-}
-
-.css-1d391kg {
-    background: rgba(0, 0, 0, 0.6) !important;
-}
-
-.css-1lcbmhc {
-    background: rgba(0, 0, 0, 0.6) !important;
-}
-
-.css-17eq0hr {
-    background: rgba(0, 0, 0, 0.6) !important;
-}
-
-.stSidebar {
-    background: rgba(0, 0, 0, 0.6) !important;
-}
-
+/* Ensure sidebar is always visible and accessible */
+.stSidebar,
 section[data-testid="stSidebar"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     background: rgba(0, 0, 0, 0.9) !important;
+    z-index: 999998 !important;
 }
 
+.stSidebar > div:first-child,
 section[data-testid="stSidebar"] > div {
     background: rgba(240, 242, 246, 0.1) !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Make sidebar content visible */
+.css-1d391kg,
+.css-1lcbmhc,
+.css-17eq0hr {
+    background: rgba(0, 0, 0, 0.6) !important;
+    display: block !important;
+    visibility: visible !important;
+}
+
+/* Ensure sidebar starts expanded on mobile */
+@media (max-width: 768px) {
+    .stSidebar {
+        transform: translateX(0) !important;
+    }
 }
 
 /* Ensure the app itself has no background color (transparent) so the SVG shows */
