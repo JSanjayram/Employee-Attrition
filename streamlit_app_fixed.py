@@ -210,8 +210,7 @@ st.markdown("""
     background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for content */
     border-radius: 10px;
     padding: 6rem;
-    margin-top: 2rem;
-    padding-top:1rem;
+    margin-top: 4rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -266,26 +265,45 @@ html, body {
     min-height: 100dvh;
 }
 
-/* Hide Streamlit top bar but keep sidebar button */
+/* Keep header visible but transparent */
 header[data-testid="stHeader"] {
     background: transparent !important;
+    height: auto !important;
+    min-height: 2.875rem !important;
 }
 
-header[data-testid="stHeader"] > div {
-    display: none;
-}
-
-/* Show only the sidebar toggle button */
-button[data-testid="collapsedControl"] {
-    display: block !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    border-radius: 4px !important;
+/* Ensure sidebar toggle button is always visible */
+button[data-testid="collapsedControl"],
+button[kind="header"],
+.css-1rs6os button,
+.css-vk3wp9 button {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 6px !important;
     color: white !important;
+    padding: 0.25rem 0.5rem !important;
+    margin: 0.5rem !important;
+    z-index: 999999 !important;
+    position: relative !important;
 }
 
-button[data-testid="collapsedControl"]:hover {
-    background: rgba(255, 255, 255, 0.2) !important;
+button[data-testid="collapsedControl"]:hover,
+button[kind="header"]:hover,
+.css-1rs6os button:hover,
+.css-vk3wp9 button:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    transform: scale(1.05) !important;
+    transition: all 0.2s ease !important;
+}
+
+/* Force show hamburger icon */
+.css-1rs6os,
+.css-vk3wp9 {
+    display: block !important;
+    visibility: visible !important;
 }
 
 .stDeployButton {
