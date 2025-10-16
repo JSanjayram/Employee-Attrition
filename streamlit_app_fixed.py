@@ -334,6 +334,25 @@ footer:after {
 .viewerBadge_link__1S137 {
     display: none;
 }
+
+/* Hide GitHub profile link in header */
+a[href*="github.com"] {
+    display: none !important;
+}
+
+/* Hide all header links except sidebar toggle */
+header[data-testid="stHeader"] a {
+    display: none !important;
+}
+
+/* Hide toolbar items */
+.css-14xtw13 {
+    display: none !important;
+}
+
+.css-1544g2n {
+    display: none !important;
+}
 </style>
 """, unsafe_allow_html=True)
 
