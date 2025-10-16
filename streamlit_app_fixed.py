@@ -209,8 +209,8 @@ st.markdown("""
 .main .block-container {
     background: rgba(0, 0, 0, 0.6); /* Semi-transparent background for content */
     border-radius: 10px;
-    padding: 6rem;
-    margin-top: 4rem;
+    padding: 2rem;
+    margin-top: 1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -265,11 +265,21 @@ html, body {
     min-height: 100dvh;
 }
 
-/* Keep header visible but transparent */
+/* Hide entire header but keep container for sidebar button */
 header[data-testid="stHeader"] {
     background: transparent !important;
-    height: auto !important;
+    height: 2.875rem !important;
     min-height: 2.875rem !important;
+    overflow: hidden !important;
+}
+
+/* Hide all header content except sidebar button */
+header[data-testid="stHeader"] > div:not(:first-child) {
+    display: none !important;
+}
+
+header[data-testid="stHeader"] > div > div:not(:first-child) {
+    display: none !important;
 }
 
 /* Ensure sidebar toggle button is always visible */
@@ -335,22 +345,31 @@ footer:after {
     display: none;
 }
 
-/* Hide GitHub profile link in header */
-a[href*="github.com"] {
+/* Comprehensive header hiding */
+.stToolbar,
+[data-testid="stToolbar"],
+.css-14xtw13,
+.css-1544g2n,
+.css-10trblm,
+.css-1kyxreq {
     display: none !important;
 }
 
-/* Hide all header links except sidebar toggle */
-header[data-testid="stHeader"] a {
+/* Hide GitHub and all header links */
+a[href*="github.com"],
+a[href*="streamlit.io"],
+header[data-testid="stHeader"] a:not([data-testid="collapsedControl"]) {
     display: none !important;
 }
 
-/* Hide toolbar items */
-.css-14xtw13 {
+/* Hide header toolbar and menu items */
+.css-1rs6os .css-10trblm,
+.css-vk3wp9 .css-10trblm {
     display: none !important;
 }
 
-.css-1544g2n {
+/* Hide everything in header except first child (sidebar button container) */
+header[data-testid="stHeader"] > div > *:not(:first-child) {
     display: none !important;
 }
 </style>
