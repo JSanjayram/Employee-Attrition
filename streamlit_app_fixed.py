@@ -264,6 +264,40 @@ html, body {
     min-height: 100vh;
     min-height: 100dvh;
 }
+
+/* Hide Streamlit top bar and bottom text */
+header[data-testid="stHeader"] {
+    display: none;
+}
+
+.stDeployButton {
+    display: none;
+}
+
+footer {
+    display: none;
+}
+
+.stDecoration {
+    display: none;
+}
+
+#MainMenu {
+    visibility: hidden;
+}
+
+footer:after {
+    content: '';
+    display: none;
+}
+
+.viewerBadge_container__1QSob {
+    display: none;
+}
+
+.viewerBadge_link__1S137 {
+    display: none;
+}
 </style>
 """, unsafe_allow_html=True)
 
