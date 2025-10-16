@@ -214,37 +214,33 @@ st.markdown("""
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Ensure sidebar is always visible and accessible */
-.stSidebar,
-section[data-testid="stSidebar"] {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    background: rgba(0, 0, 0, 0.9) !important;
-    z-index: 999998 !important;
+/* Make the sidebar transparent */
+.stSidebar > div:first-child {
+    background: rgba(0, 0, 0, 0.6) !important;
 }
 
-.stSidebar > div:first-child,
-section[data-testid="stSidebar"] > div {
-    background: rgba(240, 242, 246, 0.1) !important;
-    display: block !important;
-    visibility: visible !important;
+.css-1d391kg {
+    background: rgba(0, 0, 0, 0.6) !important;
 }
 
-/* Make sidebar content visible */
-.css-1d391kg,
-.css-1lcbmhc,
+.css-1lcbmhc {
+    background: rgba(0, 0, 0, 0.6) !important;
+}
+
 .css-17eq0hr {
     background: rgba(0, 0, 0, 0.6) !important;
-    display: block !important;
-    visibility: visible !important;
 }
 
-/* Ensure sidebar starts expanded on mobile */
-@media (max-width: 768px) {
-    .stSidebar {
-        transform: translateX(0) !important;
-    }
+.stSidebar {
+    background: rgba(0, 0, 0, 0.6) !important;
+}
+
+section[data-testid="stSidebar"] {
+    background: rgba(0, 0, 0, 0.9) !important;
+}
+
+section[data-testid="stSidebar"] > div {
+    background: rgba(240, 242, 246, 0.1) !important;
 }
 
 /* Ensure the app itself has no background color (transparent) so the SVG shows */
@@ -269,9 +265,21 @@ html, body {
     min-height: 100dvh;
 }
 
-/* Keep header transparent but visible */
+/* Hide entire header but keep container for sidebar button */
 header[data-testid="stHeader"] {
     background: transparent !important;
+    height: 2.875rem !important;
+    min-height: 2.875rem !important;
+    overflow: hidden !important;
+}
+
+/* Hide all header content except sidebar button */
+header[data-testid="stHeader"] > div:not(:first-child) {
+    display: none !important;
+}
+
+header[data-testid="stHeader"] > div > div:not(:first-child) {
+    display: none !important;
 }
 
 /* Ensure sidebar toggle button is always visible */
@@ -337,20 +345,31 @@ footer:after {
     display: none;
 }
 
-/* Hide only specific toolbar elements and GitHub links */
+/* Comprehensive header hiding */
 .stToolbar,
-[data-testid="stToolbar"] {
-    display: none !important;
-}
-
-/* Hide GitHub profile link specifically */
-a[href*="github.com"] {
-    display: none !important;
-}
-
-/* Hide deploy button and other unwanted elements */
+[data-testid="stToolbar"],
 .css-14xtw13,
-.css-1544g2n {
+.css-1544g2n,
+.css-10trblm,
+.css-1kyxreq {
+    display: none !important;
+}
+
+/* Hide GitHub and all header links */
+a[href*="github.com"],
+a[href*="streamlit.io"],
+header[data-testid="stHeader"] a:not([data-testid="collapsedControl"]) {
+    display: none !important;
+}
+
+/* Hide header toolbar and menu items */
+.css-1rs6os .css-10trblm,
+.css-vk3wp9 .css-10trblm {
+    display: none !important;
+}
+
+/* Hide everything in header except first child (sidebar button container) */
+header[data-testid="stHeader"] > div > *:not(:first-child) {
     display: none !important;
 }
 </style>
