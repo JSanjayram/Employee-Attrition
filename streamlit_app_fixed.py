@@ -265,21 +265,9 @@ html, body {
     min-height: 100dvh;
 }
 
-/* Hide entire header but keep container for sidebar button */
+/* Keep header transparent but visible */
 header[data-testid="stHeader"] {
     background: transparent !important;
-    height: 2.875rem !important;
-    min-height: 2.875rem !important;
-    overflow: hidden !important;
-}
-
-/* Hide all header content except sidebar button */
-header[data-testid="stHeader"] > div:not(:first-child) {
-    display: none !important;
-}
-
-header[data-testid="stHeader"] > div > div:not(:first-child) {
-    display: none !important;
 }
 
 /* Ensure sidebar toggle button is always visible */
@@ -345,31 +333,20 @@ footer:after {
     display: none;
 }
 
-/* Comprehensive header hiding */
+/* Hide only specific toolbar elements and GitHub links */
 .stToolbar,
-[data-testid="stToolbar"],
+[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+/* Hide GitHub profile link specifically */
+a[href*="github.com"] {
+    display: none !important;
+}
+
+/* Hide deploy button and other unwanted elements */
 .css-14xtw13,
-.css-1544g2n,
-.css-10trblm,
-.css-1kyxreq {
-    display: none !important;
-}
-
-/* Hide GitHub and all header links */
-a[href*="github.com"],
-a[href*="streamlit.io"],
-header[data-testid="stHeader"] a:not([data-testid="collapsedControl"]) {
-    display: none !important;
-}
-
-/* Hide header toolbar and menu items */
-.css-1rs6os .css-10trblm,
-.css-vk3wp9 .css-10trblm {
-    display: none !important;
-}
-
-/* Hide everything in header except first child (sidebar button container) */
-header[data-testid="stHeader"] > div > *:not(:first-child) {
+.css-1544g2n {
     display: none !important;
 }
 </style>
