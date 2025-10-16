@@ -211,6 +211,7 @@ st.markdown("""
     border-radius: 10px;
     padding: 6rem;
     margin-top: 2rem;
+    padding-top:1rem;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -265,9 +266,26 @@ html, body {
     min-height: 100dvh;
 }
 
-/* Hide Streamlit top bar and bottom text */
+/* Hide Streamlit top bar but keep sidebar button */
 header[data-testid="stHeader"] {
+    background: transparent !important;
+}
+
+header[data-testid="stHeader"] > div {
     display: none;
+}
+
+/* Show only the sidebar toggle button */
+button[data-testid="collapsedControl"] {
+    display: block !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 4px !important;
+    color: white !important;
+}
+
+button[data-testid="collapsedControl"]:hover {
+    background: rgba(255, 255, 255, 0.2) !important;
 }
 
 .stDeployButton {
